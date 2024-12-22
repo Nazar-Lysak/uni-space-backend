@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 import * as dotenv from 'dotenv';
 
 import { AppModule } from './app.module';
@@ -9,6 +10,8 @@ dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix("api");
+  app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
   .setTitle('Markets example')
