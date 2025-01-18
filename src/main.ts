@@ -19,10 +19,10 @@ async function bootstrap() {
   .setVersion('1.0')
   .addTag('Markets')
   .build();
-const documentFactory = () => SwaggerModule.createDocument(app, config);
-SwaggerModule.setup('docs', app, documentFactory);
+  const documentFactory = () => SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('docs', app, documentFactory);
 
-app.enableCors(corsConfig);
+  app.enableCors(corsConfig);
 
   await app.listen(process.env.SERVER_PORT ?? 3001);
 }
